@@ -1,6 +1,6 @@
 {
   "name": "@okou/typed-env",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Simple typed-parser of `process.env`.",
   "main": "dist/index.js",
   "files": [
@@ -22,7 +22,10 @@
     "type": "git",
     "url": "git+https://github.com/ookkoouu/typed-env.git"
   },
-  "keywords": [],
+  "keywords": [
+    "env",
+    "variables"
+  ],
   "author": "okou",
   "license": "MIT",
   "bugs": {
