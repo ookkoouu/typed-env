@@ -1,19 +1,48 @@
-name: test
+name: Test
+
 on:
   pull_request:
     paths:
       - src/**/*
+
 jobs:
   test:
-    name: test
+    name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: npm
-      - name: module install
+
+      - name: Install dependencies
         run: npm ci
-      - name: running test
+
+      - name: Test
         run: npm run test
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        uses: reviewdog/action-eslint@v1
+        with:
+          repoter: github-pr-review
+          eslint-flags: --ext .ts src
