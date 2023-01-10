@@ -22,7 +22,10 @@
     "type": "git",
     "url": "git+https://github.com/ookkoouu/typed-env.git"
   },
-  "keywords": [],
+  "keywords": [
+    "env",
+    "variables"
+  ],
   "author": "okou",
   "license": "MIT",
   "bugs": {
