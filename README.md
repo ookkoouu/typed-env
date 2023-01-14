@@ -5,49 +5,47 @@ This is NOT a loader of `.env` such as Dotenv.
 
 # Usage
 
-```env
-STR = hogehoge
-NUM = 1234.5
+```
+STR  = hogehoge
+NUM  = 1234.5
 BOOL = true, false, 0, 1
-INT = 123456789
+INT  = 123456789
 ```
 
 ```ts
 import { load } from 'env-typed';
 
-// env-name: type
 const Env = load({
-  STR: 'string',
-  NUM: 'number',
+  STR:  'string',
+  NUM:  'number',
   BOOL: 'boolean[]',
-  INT: 'bigint',
+  INT:  'bigint',
 });
 
-/*
-Env:{
-  STR: 'hogehoge',
-  NUM: 1234.5,
-  BOOL: [ true, false, true, false ],
-  INT: 123456789n
+/* parsed as */
+Env = {
+  STR:  'hogehoge',
+  NUM:  1234.5,
+  BOOL: [ true, false, false, false ],
+  INT:  123456789n
 }
 
 typeof Env = {
-  STR: string;
-  NUM: number;
+  STR:  string;
+  NUM:  number;
   BOOL: boolean[];
-  INT: bigint;
+  INT:  bigint;
 }
-*/
 ```
 
-# Note
-
-- Strings `'false'`, `'0'` and `''` (blank) are parsed as `boolean` when specified boolean.
-
-## Usabel types
+# Available Types
 
 - `string`
 - `number`
 - `boolean`
 - `bigint`
 - Array of these
+
+# Note
+
+- Only strings `false`, `0` and `''`(blank) are parsed as `false` in boolean.
