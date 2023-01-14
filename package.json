@@ -13,7 +13,7 @@
     "build:check": "run-s 'build -- --noEmit'",
     "lint": "eslint --max-warnings=0 --cache --ext .ts src",
     "lint:fix": "run-s 'lint -- --fix'",
-    "format": "prettier -w {src,test}/**/*.ts",
+    "format": "prettier -w .",
     "fix": "run-s format lint:fix",
     "clean": "rimraf dist",
     "prepare": "husky install"
