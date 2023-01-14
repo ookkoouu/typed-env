@@ -1,4 +1,18 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run fix
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+lint=0
+for file in $(git diff HEAD..origin/${branch} --name-only)
+do
+  if [ ${file##*.} = "ts" ]; then
+    lint=1
+  fi
+done
+
+if [ $lint = 1 ]; then
+  npm run fix
+else
+  echo lint skipped
+fi
